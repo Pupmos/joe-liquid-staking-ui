@@ -1,0 +1,12 @@
+/node_modules
+/.env.*
+!/.env.default
+
+.DS_Store
+# next.js
+/.next/
+/out/
+
+#IDE
+.vscode
+/.idea
