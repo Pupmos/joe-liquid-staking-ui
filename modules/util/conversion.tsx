@@ -40,7 +40,7 @@ export const zeroStakingCoin = {
 /**
  * Encode a JavaScript object into a base64 string
  */
-export function encodeBase64(obj: never): string {
+export function encodeBase64(obj: any): string {
   return Buffer.from(JSON.stringify(obj)).toString("base64");
 }
 

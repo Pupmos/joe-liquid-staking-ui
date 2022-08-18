@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 import { chain_details } from "modules/constants";
 import { encodeBase64 } from "modules/util/conversion";
-import axios from "axios";
+//import axios from "axios";
 
 export type UnbondRequestParsed = {
   status: "pending" | "unbonding" | "completed";
