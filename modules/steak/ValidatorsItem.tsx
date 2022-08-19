@@ -53,7 +53,7 @@ const ValidatorItem: FC<ValidatorProps> = ({validator, network}) => {
             <Td borderBottom="none" py="3">
                 <HStack>
                     <Text>{formatNumber(Number(validator.tokens) / 1e6, 0)}</Text>
-                    <Image src={`/${network.denom}`} w="1rem" h="1rem"/>
+                    <Image src={`/${network.denom}.png`} w="1rem" h="1rem"/>
                 </HStack>
             </Td>
             <Td borderBottom="none" py="3" borderRightRadius="2xl">

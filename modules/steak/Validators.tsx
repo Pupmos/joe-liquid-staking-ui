@@ -10,15 +10,16 @@ import {useConfig, useValidators, Validator} from "../../hooks";
 const UnbondQueue: FC<SteakProps> = ({network, client}) => {
     const validators = useValidators({api: network.api});
     const hubConfig = useConfig({client: client, hub: network.hub});
-    if (validators.isLoading || validators.isError || hubConfig.isLoading|| hubConfig.isError) {
+    if (validators.isLoading || validators.isError || hubConfig.isLoading || hubConfig.isError) {
         return (<div>Loading...</div>)
     }
 
 
     console.log('validators', validators.data);
-    const items = validators.data.validators.filter( (v) => hubConfig.data.validators.includes( v.operator_address) ).map((validator: Validator, index) => <ValidatorsItem key={index}
-                                                                                                  network={network}
-                                                                                                  validator={validator}/>);
+    const items = validators.data.validators.filter((v) => hubConfig.data.validators.includes(v.operator_address)).map((validator: Validator, index) =>
+        <ValidatorsItem key={index}
+                        network={network}
+                        validator={validator}/>);
 
     return (
         <>
