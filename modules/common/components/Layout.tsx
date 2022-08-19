@@ -20,7 +20,7 @@ function Layout({children, network, setChain, chainId, client, chain}: LayoutPro
                     {children}
 
                 </Box>
-                <Footer />
+                <Footer chain={chain} client={client} network={network}/>
             </Container>
 
         </Flex>
