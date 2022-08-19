@@ -69,11 +69,11 @@ export const chains: supported_chains = {
             logo: "obi",
             delegate_url: "https://restake.app/juno/junovaloper14ts0j42qkpr43a3tgxr7zz6l6zdf7hdethuxxd"
         },
-         /*   {
+           {
             name: "PUPMØS",
             logo: "pumpos",
             delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
-        }*/
+        }
         ]
     }
 };
