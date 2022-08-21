@@ -41,7 +41,7 @@ interface supported_chains {
 }
 
 export const chains: supported_chains = {
-    "LUNA": {
+    "terra2": {
         denom: "uluna",
         rpc: "https://terra-rpc.polkachu.com",
         api: "https://terra-api.polkachu.com",
@@ -58,7 +58,7 @@ export const chains: supported_chains = {
         validators: [],
         steak_url: "https://liquidsteaking.app/",
     },
-    "JUNO": {
+    "juno": {
         denom: "ujunox",
         rpc: "https://rpc.uni.junonetwork.io",
         api: "https://api.uni.junonetwork.io/",
@@ -84,7 +84,7 @@ export const chains: supported_chains = {
             }
         ]
     },
-    "JUNOTEST": {
+    "juno-testnet": {
         denom: "ujunox",
         rpc: "https://rpc.uni.junonetwork.io",
         api: "https://api.uni.junonetwork.io/",
@@ -110,7 +110,7 @@ export const chains: supported_chains = {
             }
         ]
     },
-    "ATLANTIC": {
+    "sei-testnet": {
         denom: "usei",
         rpc: "https://sei-rpc.dalnim.finance",
         api: "https://sei-api.dalnim.finance/",

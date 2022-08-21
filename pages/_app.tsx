@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from "react";
-import { AppProps} from "next/app";
+import {AppProps} from "next/app";
 import {ChakraProvider, CSSReset} from "@chakra-ui/react";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {CosmostationWalletAdapter, KeplrWalletAdapter} from "@wizard-ui/core";
@@ -24,9 +24,10 @@ interface HostProps extends AppProps {
     host: string,
     defaultChain: string,
 }
-const MyApp = ({Component, pageProps, host,defaultChain}: HostProps) => {
 
-    console.log("host", pageProps, host);
+const MyApp = ({Component, pageProps, host, defaultChain}: HostProps) => {
+
+    console.log("host/chain", host,defaultChain);
     // You can also provide a custom RPC endpoint
     const [chain, setChain] = useState<string>(defaultChain);
     const [network, setNetwork] = useState<chain_details>(chainDetails(defaultChain));
@@ -92,12 +93,21 @@ const MyApp = ({Component, pageProps, host,defaultChain}: HostProps) => {
 };
 
 MyApp.getInitialProps = async ({ctx}: { ctx: NextPageContext; }) => {
-
     const DEFAULTCHAIN = process.env.NEXT_PUBLIC_DEFAULT_CHAIN || "XXX";
     if (ctx.req) {
         const host = ctx.req.headers.host // will give you localhost:3000
-        console.log('host.', host);
-        return {host: host, defaultChain: DEFAULTCHAIN};
+        if (host) {
+            console.log('host=', host);
+            if (host.includes("vercel") || host.includes("localhost")) {
+                return {host, defaultChain: DEFAULTCHAIN};
+            }
+            const dotPosn = host.indexOf(".");
+            if (dotPosn >= 0) {
+                const chain = host.substring(0, dotPosn);
+                return {host: host, defaultChain: chain};
+            }
+            return {host: host, defaultChain: DEFAULTCHAIN};
+        }
     }
     return {host: "no host", defaultChain: DEFAULTCHAIN};
 }

@@ -15,7 +15,7 @@ const UnbondQueue: FC<SteakProps> = ({network, client}) => {
     }
 
 
-    console.log('validators', validators.data);
+ //   console.log('validators', validators.data);
     const items = validators.data.validators.filter((v) => hubConfig.data.validators.includes(v.operator_address)).map((validator: Validator, index) =>
         <ValidatorsItem key={index}
                         network={network}
