@@ -50,7 +50,7 @@ const Credit: FC<SteakProps> = ({network}) => {
                     <Box flex="1" color={"black"}>
                         You can support future work by delegating to these validators on your network.
                         <HStack flex="1" spacing="6" justify="center" key="footer" p={3} align="center">
-                            {network.validators.map((v) => <ValidatorLogo credit={v}/>)}
+                            {network.validators.map((v) => <ValidatorLogo key={v.name} credit={v}/>)}
                         </HStack>
                     </Box>
                 )}

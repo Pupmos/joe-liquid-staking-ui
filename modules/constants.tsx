@@ -52,7 +52,7 @@ export const chains: supported_chains = {
         multicall: "terra1m277jus3ahphsy6wml8kdwrz2ecf7wy4ggncz6d9xmhd2a29qyss3zakjl",
         hub: "terra12e4v50xl33fnwkzltz9vu565snlmx65vdrk8e2644km09myewr8q538psc",
         tx_explorer: "https://finder.terra.money/mainnet/tx/",
-        contract_explorer:"https://finder.terra.money/mainnet/address/",
+        contract_explorer: "https://finder.terra.money/mainnet/address/",
         validator_explorer: "https://ping.pub/terra2/staking/",
         gas_price: "0.02uluna",
         validators: [],
@@ -70,18 +70,18 @@ export const chains: supported_chains = {
         hub: "juno1plaat9jusdhrtfltcxjam2e0m2ens3wgvlrg0seq07fq34hy908q754vj7",
         tx_explorer: "https://testnet.mintscan.io/juno-testnet/txs/",
         validator_explorer: "https://testnet.ping.pub/juno/staking/",
-        contract_explorer:"https://testnet.mintscan.io/juno-testnet/account/",
+        contract_explorer: "https://testnet.mintscan.io/juno-testnet/account/",
         gas_price: "0.04ujuno",
         validators: [{
             name: "Obi",
             logo: "obi",
             delegate_url: "https://restake.app/juno/junovaloper14ts0j42qkpr43a3tgxr7zz6l6zdf7hdethuxxd"
         },
-           {
-            name: "PUPMØS",
-            logo: "pumpos",
-            delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
-        }
+            {
+                name: "PUPMØS",
+                logo: "pumpos",
+                delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
+            }
         ]
     },
     "JUNOTEST": {
@@ -96,18 +96,44 @@ export const chains: supported_chains = {
         hub: "juno1plaat9jusdhrtfltcxjam2e0m2ens3wgvlrg0seq07fq34hy908q754vj7",
         tx_explorer: "https://testnet.mintscan.io/juno-testnet/txs/",
         validator_explorer: "https://testnet.ping.pub/juno/staking/",
-        contract_explorer:"https://testnet.mintscan.io/juno-testnet/account/",
+        contract_explorer: "https://testnet.mintscan.io/juno-testnet/account/",
         gas_price: "0.04ujuno",
         validators: [{
             name: "Obi",
             logo: "obi",
             delegate_url: "https://restake.app/juno/junovaloper14ts0j42qkpr43a3tgxr7zz6l6zdf7hdethuxxd"
         },
-           {
-            name: "PUPMØS",
-            logo: "pumpos",
-            delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
-        }
+            {
+                name: "PUPMØS",
+                logo: "pumpos",
+                delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
+            }
+        ]
+    },
+    "ATLANTIC": {
+        denom: "usei",
+        rpc: "https://sei-rpc.dalnim.finance",
+        api: "https://sei-api.dalnim.finance/",
+        chain: "atlantic-1",
+        name: "SEI Atlantic Testnet",
+        steak: "sei1ufs3tlq4umljk0qfe8k5ya0x6hpavn897u2cnf9k0en9jr7qarqqfx6a4a",
+        multiquery: "juno1q49nd5wyecxc64hmuqr3ax3get0pt337frwjqg0lxx5lagv3vfgsa5quh0",
+        multicall: "juno1l7vrwvhvfea0wd2ch4qs9u0vrqr0pynxddft70kw0dgjuj0tzvys73hnuc",
+        hub: "sei1wkwy0xh89ksdgj9hr347dyd2dw7zesmtrue6kfzyml4vdtz6e5ws7zulsv",
+        tx_explorer: "https://sei.explorers.guru/transaction/",
+        validator_explorer: "https://sei.explorers.guru/validator",
+        contract_explorer: "https://sei.explorers.guru/account/",
+        gas_price: "0.04usei",
+        validators: [{
+            name: "Chemical Bros",
+            logo: "obi",
+            delegate_url: "https://sei.explorers.guru/validator/seivaloper1hgateul87eemqyvcjszlkdxm8welsf5v07cukp"
+        },
+            {
+                name: "PFC",
+                logo: "pfc",
+                delegate_url: "https://sei.explorers.guru/validator/seivaloper1w48csxj6xrhs99wz4uhys6ukdkegcn8haq9xpw"
+            }
         ]
     }
 };

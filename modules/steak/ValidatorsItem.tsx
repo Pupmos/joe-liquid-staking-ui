@@ -17,7 +17,7 @@ const ValidatorItem: FC<ValidatorProps> = ({validator, network}) => {
             <Td borderBottom="none" py="3" borderLeftRadius="2xl">
                 <HStack>
                     <Image
-                        src={`/${validator.description.identity}.jpeg`}
+                        src={`/identities/${validator.description.identity}.jpeg`}
                         alt={validator.description.identity}
                         h="2rem"
                         w="2rem"
