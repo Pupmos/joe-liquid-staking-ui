@@ -65,6 +65,14 @@ const Credit: FC<SteakProps> = ({network}) => {
                     </Link> both of whom have no affiliation with this.
                 </Box>
             </Box>
+            <Box color="black" bg="brand.darkBrown" py="4" mb="4" borderRadius="2xl" textAlign="center">
+                <Box flex="1" color={"black"}>
+                   KEPLR integration is still a work in progress.<br />
+                   You will need to refresh the page when changing accounts.
+
+                </Box>
+
+            </Box>
 
         </>
     );
