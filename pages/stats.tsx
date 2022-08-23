@@ -23,11 +23,13 @@ export default function StatsPage ({ network, chain}: SteakProps)  {
       <About network={network} chain={chain} client={client}/>
       <Overview network={network} chain={chain} client={client} />
       <Validators network={network} chain={chain} client={client} />
+        {/*
       <Box textAlign="center" my="20">
         <Text fontSize="2xl" fontWeight="800" opacity={0.4}>
           Under construction... More stats coming soon!
         </Text>
       </Box>
+      */}
     </>
   );
 }
