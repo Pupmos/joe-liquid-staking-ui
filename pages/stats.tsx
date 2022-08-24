@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import {  Text } from "@chakra-ui/react";
 import Head from "next/head";
 
 import {SteakProps} from "./_app";
@@ -11,7 +11,6 @@ export default function StatsPage ({ network, chain}: SteakProps)  {
     const client = useCWClient();
 
     if (!network || !client) {
-
         return <Text bg="white">Error. No network</Text>;
     }
 
