@@ -44,7 +44,7 @@ export const chains: supported_chains = {
     "terra2": {
         denom: "uluna",
         rpc: "https://terra-rpc.polkachu.com",
-        api: "https://terra-api.polkachu.com",
+        api: "https://terra-api.polkachu.com/",
         chain: "phoenix-1",
         name: "Luna 2.0",
         steak: "terra1xumzh893lfa7ak5qvpwmnle5m5xp47t3suwwa9s0ydqa8d8s5faqn6x7al",
@@ -59,29 +59,25 @@ export const chains: supported_chains = {
         steak_url: "https://liquidsteaking.app/",
     },
     "juno": {
-        denom: "ujunox",
-        rpc: "https://rpc.uni.junonetwork.io",
-        api: "https://api.uni.junonetwork.io/",
-        chain: "uni-3",
-        name: "Juno Testnet",
-        steak: "juno1w675s76fn0wt6yumh87akuedxp4h3lyf3vkcwxr256g30555zc4spl30gp",
+        denom: "ujuno",
+        rpc: "https://juno-rpc.dalnim.finance",
+        api: "https://juno-api.dalnim.finance/",
+        chain: "juno-1",
+        name: "Juno",
+        steak: "juno173c59crjqeec28cpzs7n0y7hm4cd308zda8z6j4cnl6pct3stenseg2dxp",
         multiquery: "juno1q49nd5wyecxc64hmuqr3ax3get0pt337frwjqg0lxx5lagv3vfgsa5quh0",
         multicall: "juno1l7vrwvhvfea0wd2ch4qs9u0vrqr0pynxddft70kw0dgjuj0tzvys73hnuc",
-        hub: "juno1plaat9jusdhrtfltcxjam2e0m2ens3wgvlrg0seq07fq34hy908q754vj7",
-        tx_explorer: "https://testnet.mintscan.io/juno-testnet/txs/",
-        validator_explorer: "https://testnet.ping.pub/juno/staking/",
-        contract_explorer: "https://testnet.mintscan.io/juno-testnet/account/",
+        hub: "juno1r48wqcm3kmgw4xn40luxhwku9jwx8er4u3na2ap2y003acghwpusrf5zde",
+        tx_explorer: "https://mintscan.io/juno/txs/",
+        validator_explorer: "https://ping.pub/juno/staking/",
+        contract_explorer: "https://mintscan.io/juno/account/",
         gas_price: "0.04ujuno",
         validators: [{
             name: "Obi",
             logo: "obi",
             delegate_url: "https://restake.app/juno/junovaloper14ts0j42qkpr43a3tgxr7zz6l6zdf7hdethuxxd"
         },
-            {
-                name: "PUPMØS",
-                logo: "pumpos",
-                delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
-            }
+
         ]
     },
     "juno-testnet": {
@@ -103,11 +99,7 @@ export const chains: supported_chains = {
             logo: "obi",
             delegate_url: "https://restake.app/juno/junovaloper14ts0j42qkpr43a3tgxr7zz6l6zdf7hdethuxxd"
         },
-            {
-                name: "PUPMØS",
-                logo: "pumpos",
-                delegate_url: "https://restake.app/juno/junovaloper1ka8v934kgrw6679fs9cuu0kesyl0ljjy2kdtrl"
-            }
+
         ]
     },
     "sei-testnet": {

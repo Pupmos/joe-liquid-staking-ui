@@ -1,4 +1,4 @@
-import {chakra, Box, Flex, Link, Image, HStack, Center} from "@chakra-ui/react";
+import { Box, Flex, Link, Image, HStack, Center} from "@chakra-ui/react";
 import React, {FC} from "react";
 
 import Header from "../common/components/Header";
@@ -36,8 +36,7 @@ const Credit: FC<SteakProps> = ({network}) => {
                 <Box flex="1" color={"black"}>
                     Liquid Steaking is brought to you by&nbsp;
                     <Link target="_blank" href="https://twitter.com/PFC_Validator">
-                        <chakra.a>PFC</chakra.a>
-
+                       PFC
                     </Link>.
                 </Box>
 
@@ -52,16 +51,15 @@ const Credit: FC<SteakProps> = ({network}) => {
 
                 {network.validators.length == 1 && (<Box py="3">
                         <Center>You can support future work by delegating to&nbsp;
-
                             <ValidatorLogoSingle
                                 credit={network.validators[0]}/></Center></Box>
                 )}
                 <Box flex="1" color={"black"}>Steak is built on the work of&nbsp;
                     <Link target="_blank" href="https://twitter.com/arthuryeti">
-                        <chakra.a>Arthur</chakra.a>
+                       Arthur
                     </Link>&nbsp;and&nbsp;
                     <Link target="_blank" href="https://twitter.com/larry0x">
-                        <chakra.a>Larry</chakra.a>
+                        Larry
                     </Link> both of whom have no affiliation with this.
                 </Box>
             </Box>

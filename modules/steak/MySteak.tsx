@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import { FC } from "react";
 
 import Header from "../common/components/Header";
-import JunoSwapIcon from "modules/steak/chains/juno/JunoSwapIcon";
+//import JunoSwapIcon from "modules/steak/chains/juno/JunoSwapIcon";
 import { useBalance, useWallet } from "@wizard-ui/react";
 import { convertFromMicroDenom, convertMicroDenomToDenom, formatNumber } from "modules/util/conversion";
 import { SteakProps } from "../../pages/_app";
@@ -39,7 +39,9 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
     return (<Header text="Loading..." />);
   }
   if (steakBalance.error) {
+    console.log('Steak Balance Error',steakBalance.error)
     return (<Header text="Error" />);
+
   }
   const steakDenomBalance = convertMicroDenomToDenom(steakBalance.data);
   const steakValue = steakBalance && prices.steak ? steakBalance.data * prices.steak : undefined;
