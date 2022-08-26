@@ -28,7 +28,7 @@ const ValidatorItem: FC<ValidatorProps> = ({validator, network}) => {
                         }}
                     />
                     <Link
-                        href={`${network.validator_explorer}/${validator.operator_address}`}
+                        href={`${network.validator_explorer}${validator.operator_address}`}
                         isExternal={true}
                         mr="1"
                         whiteSpace="nowrap"

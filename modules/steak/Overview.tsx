@@ -14,6 +14,7 @@ const Overview: FC<SteakProps> = ({network, client}) => {
         return <div>Loading</div>
     }
     if (hubState.isError) {
+        console.log('hubstate',hubState.error )
         return <div>Error</div>
     }
 

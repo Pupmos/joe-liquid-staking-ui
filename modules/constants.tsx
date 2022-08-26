@@ -113,7 +113,7 @@ export const chains: supported_chains = {
         multicall: "juno1l7vrwvhvfea0wd2ch4qs9u0vrqr0pynxddft70kw0dgjuj0tzvys73hnuc",
         hub: "sei1wkwy0xh89ksdgj9hr347dyd2dw7zesmtrue6kfzyml4vdtz6e5ws7zulsv",
         tx_explorer: "https://sei.explorers.guru/transaction/",
-        validator_explorer: "https://sei.explorers.guru/validator",
+        validator_explorer: "https://sei.explorers.guru/validator/",
         contract_explorer: "https://sei.explorers.guru/account/",
         gas_price: "0.04usei",
         validators: [{
