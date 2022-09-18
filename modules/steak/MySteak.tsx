@@ -50,7 +50,7 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
     <>
       <Header text="My Steak">
         {chain === "LUNA" && <TerraMySteak network={network}  chain={chain} client={client} /> }
-        {chain === "JUNO" && <JunoMySteak network={network} chain={chain} client={client} /> }
+        {chain === "juno" && <JunoMySteak network={network} chain={chain} client={client} /> }
 
         &nbsp;
 

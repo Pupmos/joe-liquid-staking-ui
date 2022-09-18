@@ -6,14 +6,14 @@ import JunoSwapIcon from "modules/steak/chains/juno/JunoSwapIcon";
 import JunoSwapText from "modules/steak/chains/juno/JunoSwapText";
 
 
-const JunoMySteak: FC<SteakProps> = ({ network }) => {
+const JunoMySteak: FC<SteakProps> = () => {
 
   return (
     <Link
       variant="submit"
       isExternal={true}
       bg={"black"}
-      href={`https://junoswap.com/swap?from=${network.denom}&to=${network.hub}`}
+      href='https://junoswap.com/swap?from=JUNO&to=STEAK'
     >
       <Flex
         display={["none", "flex", null, null]}
