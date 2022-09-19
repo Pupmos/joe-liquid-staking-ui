@@ -43,8 +43,8 @@ interface supported_chains {
 export const chains: supported_chains = {
     "terra2": {
         denom: "uluna",
-        rpc: "https://terra-rpc.polkachu.com",
-        api: "https://terra-api.polkachu.com/",
+        rpc: "https://terra2-rpc.dalnim.finance",
+        api: "https://phoenix-lcd.terra.dev/",
         chain: "phoenix-1",
         name: "Luna 2.0",
         steak: "terra1xumzh893lfa7ak5qvpwmnle5m5xp47t3suwwa9s0ydqa8d8s5faqn6x7al",
