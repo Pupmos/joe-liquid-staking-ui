@@ -72,8 +72,10 @@ const WithdrawForm: FC<SteakProps> = ({ network, chain, client }) => {
         }
       );
     } else {
+      console.log('Withdraw form: withdrawableAmount',withdrawableAmount)
     }
   } else {
+    console.log('Withdraw form: address/hub not set?')
   }
 
 
@@ -92,7 +94,7 @@ const WithdrawForm: FC<SteakProps> = ({ network, chain, client }) => {
       <Box textAlign="center">
         <Button
           type="button"
-          variant="primary"
+          variant="solid"
           mt="6"
           onClick={onOpen}
           isLoading={false}
