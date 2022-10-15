@@ -82,7 +82,7 @@ const WithdrawForm: FC<SteakProps> = ({ network, chain, client }) => {
 
   return (
     <Box maxW="container.sm" mx="auto">
-      <Header text="Withdrawable LUNA Amount" />
+      <Header text={`Withdrawable ${convertFromMicroDenom(network.denom)} Amount`} />
       <AssetInput
         assetSymbol={convertFromMicroDenom(network.denom)}
         assetLogo={`/${network.denom}.png`}
