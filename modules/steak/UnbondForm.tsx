@@ -137,8 +137,8 @@ const UnbondForm: FC<SteakProps> = ({ network, chain, client }) => {
         <Text fontSize="sm" opacity="0.4" mt="6">
           Due to limitations imposed by the cosmos-based chains, the protocol may not be able to serve all
           unstaking requests from users on-demand. Instead, unstaking requests are collected over a
-          3-day period, and submitted together in a batch. The unstaking period lasts for 21 days
-          after the batch is submitted. Use the Steak webapp to claim the unstaked {convertFromMicroDenom(network.denom)} after the 21
+          3-day period, and submitted together in a batch. The unstaking period lasts for 21 (28 for Juno) days
+          after the batch is submitted. Use the Steak webapp to claim the unstaked {convertFromMicroDenom(network.denom)} after the 21/28
           days.
         </Text>
       </Box>
