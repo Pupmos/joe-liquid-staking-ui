@@ -66,9 +66,10 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
           STEAK balance in wallet
         </Text>
         <Flex direction={["column", "row", null, null]} justify="center" mt="10">
-          <NextLink href="/bond" passHref>
+          {/*}   <NextLink href="/#" passHref aria-disabled={true} >
             <chakra.a {...bondOrUnbondStyle}>Stake {convertFromMicroDenom(network.denom)}</chakra.a>
           </NextLink>
+          */}
           <NextLink href="/unbond" passHref>
             <chakra.a {...bondOrUnbondStyle}>Unstake STEAK</chakra.a>
           </NextLink>

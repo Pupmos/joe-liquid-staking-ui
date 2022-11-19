@@ -14,7 +14,10 @@ export default function BondPage({ network, chain }: SteakProps) {
       <Head>
         <title>Steak | Bond</title>
       </Head>
+        <p>Bonding is suspended</p>
+        {/*
       <BondForm chain={chain} network={network} client={client} />
+      */}
     </>
   );
 };
