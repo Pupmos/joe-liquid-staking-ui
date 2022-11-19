@@ -91,7 +91,7 @@ const UnbondQueueItem: FC<UnbondQueueItem> = ({ pending_batch, id, shares, netwo
     );
 
   return (
-    <Tr transition="0.25s all" bg="black"  mb="2" _hover={{ bg: "gray.100" }}>
+    <Tr transition="0.25s all" bg="blue"  mb="2" _hover={{ bg: "gray.100" }}>
       <Td borderBottom="none" py="6" borderLeftRadius="2xl">
         {capitalizeFirstLetter(status)}
       </Td>
