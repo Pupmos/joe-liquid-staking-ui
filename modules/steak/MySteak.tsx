@@ -48,6 +48,7 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
 
   return (
     <>
+      <p>Steak is closing down.. this site will stay up for people to unstake their tokens</p>
       <Header text="My Steak">
         {chain === "LUNA" && <TerraMySteak network={network}  chain={chain} client={client} /> }
         {chain === "juno" && <JunoMySteak network={network} chain={chain} client={client} /> }
