@@ -103,7 +103,7 @@ const AssetInput: FC<Props> = ({
               <Text fontSize="small">${formatNumber(price * (fixedAmount ?? amount), 2)}</Text>
             </Box>
           </NumberInput>
-          <Flex align="center" justify="space-between" mt="1" bg='blue'>
+          <Flex align="center" justify="space-between" mt="1"  color="white" bg='saddlebrown'>
             <HStack spacing="4" >
               <Text variant="dimmed" fontSize="sm">
                 In Wallet:
