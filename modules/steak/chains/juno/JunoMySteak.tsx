@@ -7,7 +7,8 @@ import JunoSwapText from "modules/steak/chains/juno/JunoSwapText";
 
 
 const JunoMySteak: FC<SteakProps> = () => {
-
+return (<></>);
+/*
   return (
     <Link
       variant="submit"
@@ -27,6 +28,8 @@ const JunoMySteak: FC<SteakProps> = () => {
       </Flex>
     </Link>
   );
+
+ */
 };
 
 export { JunoMySteak };
