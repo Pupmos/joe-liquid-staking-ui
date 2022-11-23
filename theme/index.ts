@@ -65,10 +65,10 @@ export default extendTheme({
   colors: {
     brand: {
       darkerBrown: "#a08b77",
-      darkBrown: "#d2bba6",
-      lightBrown: "#f5d9c0",
+      darkBrown: "hsl(262deg 52% 70%)",
+      lightBrown: "hsl(262deg 52% 80%)",
       lighterBrown: "#e4d5c8",
-      red: "#d9474b",
+      red: "hsl(262deg 52% 40%)",
       //black: "#312b26",
       black: "#fff",
       white:"#fff"

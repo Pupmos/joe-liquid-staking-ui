@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useBalance, useWallet, WalletModalButton } from "@wizard-ui/react";
+import { useWallet, WalletButton } from "@wizard-ui/react";
 import { truncate } from "@wizard-ui/core";
 import {
   HStack,
@@ -17,6 +17,7 @@ import { ChevronDown as ChevronDownIcon, Bell as BellIcon } from "lucide-react";
 
 import { convertFromMicroDenom, convertMicroDenomToDenom } from "modules/util/conversion";
 import { SteakProps } from "../../../pages/_app";
+import { useBalance } from "hooks/useBalance";
 
 export const CosmosWallet: FC<SteakProps> = ({ network }) => {
 //  const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +44,7 @@ export const CosmosWallet: FC<SteakProps> = ({ network }) => {
               {steakBalance.isLoading && <MenuItem>Steak Balance Loading...</MenuItem>}
               {steakBalance.isError && <MenuItem>Steak Balance Error...</MenuItem>}
               {!steakBalance.isError && !steakBalance.isLoading &&
-                <MenuItem>Steak: {convertMicroDenomToDenom(steakBalance.data)}</MenuItem>}
+                <MenuItem>pupJOE: {convertMicroDenomToDenom(steakBalance.data)}</MenuItem>}
 
               <MenuItem>Copy Address</MenuItem>
             </MenuList>
@@ -53,5 +54,5 @@ export const CosmosWallet: FC<SteakProps> = ({ network }) => {
     );
   }
 
-  return <WalletModalButton />;
+  return <WalletButton />;
 };

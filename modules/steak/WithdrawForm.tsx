@@ -5,12 +5,13 @@ import { SteakProps } from "../../pages/_app";
 import Header from "modules/common/components/Header";
 import AssetInput from "modules/common/components/AssetInput";
 import TxModal from "modules/common/components/TxModal";
-import { useBalance, useWallet } from "@wizard-ui/react";
+import {  useWallet } from "@wizard-ui/react";
 import { convertFromMicroDenom } from "modules/util/conversion";
 import {  useUnbondRequestsHydrated } from "../../hooks";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@cosmjs/encoding";
+import useBalance from "hooks/useBalance";
 
 const WithdrawForm: FC<SteakProps> = ({ network, chain, client }) => {
   const { address } = useWallet();
@@ -19,7 +20,7 @@ const WithdrawForm: FC<SteakProps> = ({ network, chain, client }) => {
   const denomBalance = useBalance({ address, token: network.denom });
   const steakBalance = useBalance({ address, token: network.steak });
 
-  const unbondRequests = useUnbondRequestsHydrated({ client, hub: network.hub,address });
+  const unbondRequests = useUnbondRequestsHydrated({ client, hub: network.hub, address: address || '' });
   const { isOpen, onOpen, onClose } = useDisclosure();
   if (steakBalance.isLoading || denomBalance.isLoading || unbondRequests.isLoading) {
     return <Text bg="white">Loading...</Text>;

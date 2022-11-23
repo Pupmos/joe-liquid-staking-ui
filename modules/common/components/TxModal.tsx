@@ -123,7 +123,7 @@ interface Props extends SteakProps {
 }
 
 const TxModal: FC<Props> = ({ network, msgs, isOpen, onClose }) => {
-  const { address, sendTransaction } = useWallet();
+  const { address, signingClient, wallet } = useWallet();
   const apiURL = network.api;
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
   const [showCloseBtn, setShowCloseBtn] = useState<boolean>(false);
@@ -148,16 +148,18 @@ const TxModal: FC<Props> = ({ network, msgs, isOpen, onClose }) => {
     if (isOpen && address) {
       //sendTransaction(msgs, gasOptions);
       setTxResult(undefined);
-      sendTransaction({
-        messages: msgs,
-        signerAddress: address,
-        fee: "auto",
-
-        memo: "Liquid Steaking"
-      })
-
+      debugger
+      wallet
+      signingClient?.signAndBroadcast(
+        address,
+        msgs,
+       {
+        gas: '2000000',
+        amount: [{ denom: 'ujoe', amount: '10000000' }]
+       }
+      )
         .then((result) => {
-      //    console.log('tx result', result)
+          // console.log('tx result', result)
           setTxStatusHeader("Transaction Broadcasted");
           setTxStatusDetail(TxHashText(network.tx_explorer, result.transactionHash));
           setIntervalId(

@@ -8,11 +8,12 @@ import Header from "modules/common/components/Header";
 import ArrowDownIcon from "modules/common/components/Icons/ArrowDownIcon";
 import TxModal from "modules/common/components/TxModal";
 import { convertFromMicroDenom, encodeBase64, truncateDecimals } from "modules/util/conversion";
-import { useBalance, useWallet } from "@wizard-ui/react";
+import { useWallet } from "@wizard-ui/react";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { useHubState, usePendingBatch } from "../../hooks";
 import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import { toUtf8 } from "@cosmjs/encoding";
+import useBalance from "hooks/useBalance";
 
 const UnbondForm: FC<SteakProps> = ({ network, chain, client }) => {
   const { address } = useWallet();
@@ -89,11 +90,11 @@ const UnbondForm: FC<SteakProps> = ({ network, chain, client }) => {
 
   return (
     <Box maxW="container.sm" mx="auto">
-      <Header text="Unstake STEAK" />
+      <Header text="Unstake PUPJOE" />
       <Box position="relative">
         <AssetInput
-          assetSymbol="STEAK"
-          assetLogo="/steak.png"
+          assetSymbol="PUPJOE"
+          assetLogo="/pupjoes.jpg"
           price={prices.steak}
           balance={!steakBalance.isLoading ? steakBalance.data  / 1e6 : 0}
           isEditable={true}

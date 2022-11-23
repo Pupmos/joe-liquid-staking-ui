@@ -4,11 +4,12 @@ import { FC } from "react";
 
 import Header from "../common/components/Header";
 //import JunoSwapIcon from "modules/steak/chains/juno/JunoSwapIcon";
-import { useBalance, useWallet } from "@wizard-ui/react";
+import {  useWallet } from "@wizard-ui/react";
 import { convertFromMicroDenom, convertMicroDenomToDenom, formatNumber } from "modules/util/conversion";
 import { SteakProps } from "../../pages/_app";
 import { TerraMySteak } from "modules/steak/chains/terra/TerraMySteak";
 import { JunoMySteak } from "modules/steak/chains/juno/JunoMySteak";
+import useBalance from "hooks/useBalance";
 
 const bondOrUnbondStyle = {
   transition: "0.2s all",
@@ -26,11 +27,11 @@ const bondOrUnbondStyle = {
   }
 };
 
-const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
+const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
   const { address } = useWallet();
   const steakBalance = useBalance({ address, token: network.steak });
 
-  const prices = {steak: 0.00};
+  const prices = { steak: 0.00 };
 
   if (!address) {
     return (<Header text="Please Connect" />);
@@ -39,7 +40,7 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
     return (<Header text="Loading..." />);
   }
   if (steakBalance.error) {
-    console.log('Steak Balance Error',steakBalance.error)
+    console.log('Pupjoes Balance Error', steakBalance.error)
     return (<Header text="Error" />);
 
   }
@@ -48,10 +49,10 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
 
   return (
     <>
-      <Box color='white' bg='red'>Steak is closing down.. this site will stay up for people to unstake their tokens</Box>
-      <Header text="My Steak">
-        {chain === "LUNA" && <TerraMySteak network={network}  chain={chain} client={client} /> }
-        {chain === "juno" && <JunoMySteak network={network} chain={chain} client={client} /> }
+      {/* <Box color='white' bg='red'>Pupjoes is closing down.. this site will stay up for people to unstake their tokens</Box> */}
+      <Header text="My PUPJØES">
+        {chain === "LUNA" && <TerraMySteak network={network} chain={chain} client={client} />}
+        {chain === "juno" && <JunoMySteak network={network} chain={chain} client={client} />}
 
         &nbsp;
 
@@ -64,15 +65,15 @@ const MySteak: FC<SteakProps> = ({ network,chain,client}) => {
           {"($" + (steakValue ? formatNumber(steakValue, 2) : "0.00") + ")"}
         </Text>
         <Text color="brand.lightBrown" mt="5">
-          STEAK balance in wallet
+          PUPJOE balance in wallet
         </Text>
         <Flex direction={["column", "row", null, null]} justify="center" mt="10">
-          {/*}   <NextLink href="/#" passHref aria-disabled={true} >
+          <NextLink href="/bond" passHref aria-disabled={true} >
             <chakra.a {...bondOrUnbondStyle}>Stake {convertFromMicroDenom(network.denom)}</chakra.a>
           </NextLink>
-          */}
+
           <NextLink href="/unbond" passHref>
-            <chakra.a {...bondOrUnbondStyle}>Unstake STEAK</chakra.a>
+            <chakra.a {...bondOrUnbondStyle}>Unstake PUPJOE</chakra.a>
           </NextLink>
         </Flex>
       </Box>

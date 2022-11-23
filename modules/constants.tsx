@@ -123,16 +123,39 @@ export const chains: supported_chains = {
             logo: "obi",
             delegate_url: "https://sei.explorers.guru/validator/seivaloper1hgateul87eemqyvcjszlkdxm8welsf5v07cukp"
         },
-            {
-                name: "PFC",
-                logo: "pfc",
-                delegate_url: "https://sei.explorers.guru/validator/seivaloper1w48csxj6xrhs99wz4uhys6ukdkegcn8haq9xpw"
-            }
+        {
+            name: "PFC",
+            logo: "pfc",
+            delegate_url: "https://sei.explorers.guru/validator/seivaloper1w48csxj6xrhs99wz4uhys6ukdkegcn8haq9xpw"
+        }
         ]
-    }
+    },
+    "joe": {
+        denom: "ujoe",
+        rpc: "https://joe.rpc.chandrastation.com",
+        api: "https://joe.api.chandrastation.com",
+        chain: "joe-1",
+        name: "Jøe",
+        steak: "joe1fuyxwxlsgjkfjmxfthq8427dm2am3ya3cwcdr8gls29l7jadtazs9xwftx",
+        multiquery: "juno1q49nd5wyecxc64hmuqr3ax3get0pt337frwjqg0lxx5lagv3vfgsa5quh0",
+        multicall: "juno1l7vrwvhvfea0wd2ch4qs9u0vrqr0pynxddft70kw0dgjuj0tzvys73hnuc",
+        hub: "joe18yn206ypuxay79gjqv6msvd9t2y49w4fz8q7fyenx5aggj0ua37qnv0qf3",
+        tx_explorer: "https://mintscan.io/juno/txs/",
+        validator_explorer: "https://justjoe.app",
+        contract_explorer: "https://ping.justjoe.app",
+        gas_price: "0.04ujoe",
+        validators: [
+            {
+                name: "Pupjøes",
+                logo: "pupmos",
+                delegate_url: "https://twitter.com/pupmos/"
+            },
+        ]
+    },
 };
 
 export function chainDetails(network: string): chain_details {
+    console.log({network})
     if (chains[network]) {
         return chains[network];
     }

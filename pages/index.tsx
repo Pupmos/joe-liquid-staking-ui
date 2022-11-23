@@ -1,13 +1,13 @@
 import MySteak from "modules/steak/MySteak";
 import Head from "next/head";
 import UnbondQueue from "modules/steak/UnbondQueue";
-import { useCWClient } from "@wizard-ui/react";
 import { SteakProps } from "./_app";
 import { Text } from "@chakra-ui/react";
 import Credit from "modules/steak/Credit";
+import { useWallet } from "@wizard-ui/react";
 
 export default function Web({ network, chain}: SteakProps) {
-  const client = useCWClient();
+  const { client } = useWallet()
 
   if (!network || !client) {
 
@@ -17,7 +17,7 @@ export default function Web({ network, chain}: SteakProps) {
   return (
     <>
       <Head>
-        <title>Steak | My Steak</title>
+        <title>Pupjoes | My Pupjoes</title>
       </Head>
       <MySteak network={network}  client={client} chain={chain}/>
       <UnbondQueue network={network} client={client} chain={chain}/>

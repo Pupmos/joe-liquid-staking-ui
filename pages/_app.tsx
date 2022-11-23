@@ -1,16 +1,18 @@
-import React, {useEffect, useMemo, useState} from "react";
-import {AppProps} from "next/app";
-import {ChakraProvider, CSSReset} from "@chakra-ui/react";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {CosmostationWalletAdapter, KeplrWalletAdapter} from "@wizard-ui/core";
-import {CWClientProvider, WalletModalProvider, WalletProvider} from "@wizard-ui/react";
+import React, { useEffect, useMemo, useState } from "react";
+import { AppProps } from "next/app";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { WalletModalProvider, WalletProvider } from "@wizard-ui/react";
+import { KeplrWalletAdapter } from "@wizard-ui/wallet-keplr"
+import { CosmostationWalletAdapter } from "@wizard-ui/wallet-cosmostation"
 import "d3-format";
-import {Layout} from "modules/common";
+import { Layout } from "modules/common";
 import theme from "../theme";
-import {chain_details, chains, chainDetails} from "modules/constants";
-import {CosmWasmClient} from "@cosmjs/cosmwasm-stargate";
-import {GasPrice} from "@cosmjs/stargate";
-import {NextPageContext} from "next";
+import { chain_details, chains, chainDetails } from "modules/constants";
+import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
+import { GasPrice } from "@cosmjs/stargate";
+import { NextPageContext } from "next";
+
 
 const queryClient = new QueryClient();
 
@@ -25,13 +27,12 @@ interface HostProps extends AppProps {
     defaultChain: string,
 }
 
-const MyApp = ({Component, pageProps, host, defaultChain}: HostProps) => {
+const MyApp = ({ Component, pageProps, host, defaultChain }: HostProps) => {
 
-    console.log("host/chain", host,defaultChain);
+    console.log("host/chain", host, defaultChain);
     // You can also provide a custom RPC endpoint
     const [chain, setChain] = useState<string>(defaultChain);
     const [network, setNetwork] = useState<chain_details>(chainDetails(defaultChain));
-    GasPrice;
 
     useEffect(() => {
         if (chain) {
@@ -55,60 +56,55 @@ const MyApp = ({Component, pageProps, host, defaultChain}: HostProps) => {
                 options: {
                     gasPrice: GasPrice.fromString("0.015uosmo"),
                 },
-            }), new CosmostationWalletAdapter({
+            }),
+            new CosmostationWalletAdapter({
                 endpoint,
                 chainId,
                 chainName: "osmosis testnet",
                 options: {
                     gasPrice: GasPrice.fromString("0.015uosmo"),
                 },
-            }),];
+            }),
+            ];
         },
         [endpoint, chainId, chain]
     );
 
-    // const client =useCWClient()
-
-
     return (
         <ChakraProvider theme={theme}>
-            <CWClientProvider endpoint={endpoint}>
-                <WalletProvider wallets={wallets} chainId={chainId}>
-                    <WalletModalProvider>
-                        <QueryClientProvider client={queryClient}>
-                            <CSSReset/>
-                            <Layout network={network} chain={chain} setChain={setChain} chainId={chainId}
-                                    client={null}>
-                                <Component {...pageProps} network={network} chain={chain} client={null}/>
-
-                            </Layout>
-
-
-                        </QueryClientProvider>
-                    </WalletModalProvider>
-                </WalletProvider>
-            </CWClientProvider>
+            <WalletProvider endpoint={network.rpc} wallets={wallets} chainId={chainId}>
+                <WalletModalProvider>
+                    <QueryClientProvider client={queryClient}>
+                        <CSSReset />
+                        <Layout network={network} chain={chain} setChain={setChain} chainId={chainId}
+                            client={null}>
+                            <Component {...pageProps} network={network} chain={chain} client={null} />
+                        </Layout>
+                    </QueryClientProvider>
+                </WalletModalProvider>
+            </WalletProvider>
         </ChakraProvider>
     );
 };
 
-MyApp.getInitialProps = async ({ctx}: { ctx: NextPageContext; }) => {
+MyApp.getInitialProps = async ({ ctx }: { ctx: NextPageContext; }) => {
     const DEFAULTCHAIN = process.env.NEXT_PUBLIC_DEFAULT_CHAIN || "XXX";
-    if (ctx.req) {
-        const host = ctx.req.headers.host // will give you localhost:3000
-        if (host) {
-            console.log('host=', host);
-            if (host.includes("vercel") || host.includes("localhost")) {
-                return {host, defaultChain: DEFAULTCHAIN};
-            }
-            const dotPosn = host.indexOf(".");
-            if (dotPosn >= 0) {
-                const chain = host.substring(0, dotPosn);
-                return {host: host, defaultChain: chain};
-            }
-            return {host: host, defaultChain: DEFAULTCHAIN};
-        }
-    }
-    return {host: "no host", defaultChain: DEFAULTCHAIN};
+    console.log({ DEFAULTCHAIN })
+    // if (ctx.req) {
+    //     const host = ctx.req.headers.host // will give you localhost:3000
+    //     if (host) {
+    //         console.log('host=', host);
+    //         if (host.includes("vercel") || host.includes("localhost")) {
+    //             return {host, defaultChain: DEFAULTCHAIN};
+    //         }
+    //         const dotPosn = host.indexOf(".");
+    //         if (dotPosn >= 0) {
+    //             const chain = host.substring(0, dotPosn);
+    //             return {host: host, defaultChain: chain};
+    //         }
+    //         return {host: host, defaultChain: DEFAULTCHAIN};
+    //     }
+    // }
+    return { host: "no host", defaultChain: DEFAULTCHAIN };
 }
 export default MyApp;

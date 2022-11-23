@@ -9,7 +9,8 @@ function ValidatorLogoSingle({credit}: { credit: validator_credit }) {
     return (
         <Flex align="center">
             <Link target="_blank" href={credit.delegate_url}>
-                <Image w={30} src={`/validator_logos/${credit.logo}.png`} alt={credit.name}/>{credit.name}
+                {/* <Image w={30} src={`/validator_logos/${credit.logo}.png`} alt={credit.name}/> */}
+                {credit.name}
             </Link>
         </Flex>
     )
@@ -34,9 +35,9 @@ const Credit: FC<SteakProps> = ({network}) => {
             </Header>
             <Box color="black" bg="brand.lightBrown" py="4" mb="4" borderRadius="2xl" textAlign="center">
                 <Box flex="1" color={"black"}>
-                    Liquid Steaking is brought to you by&nbsp;
-                    <Link target="_blank" href="https://twitter.com/PFC_Validator">
-                       PFC
+                    Pupjøes Liquid Staking is brought to you by&nbsp;
+                    <Link target="_blank" href="https://twitter.com/pupmos">
+                       Pupjøes
                     </Link>.
                 </Box>
 
@@ -54,19 +55,23 @@ const Credit: FC<SteakProps> = ({network}) => {
                             <ValidatorLogoSingle
                                 credit={network.validators[0]}/></Center></Box>
                 )}
-                <Box flex="1" color={"black"}>Steak is built on the work of&nbsp;
+                <Box flex="1" color={"black"}>Pupjøes is built on the work of&nbsp;
+                    <Link target="_blank" href="https://twitter.com/pfc_validator">
+                       PFC Validator
+                    </Link>,&nbsp;
                     <Link target="_blank" href="https://twitter.com/arthuryeti">
                        Arthur
                     </Link>&nbsp;and&nbsp;
                     <Link target="_blank" href="https://twitter.com/larry0x">
                         Larry
-                    </Link> both of whom have no affiliation with this.
+                    </Link> none of whom have any affiliation with this.
                 </Box>
             </Box>
             <Box color="black" bg="brand.darkBrown" py="4" mb="4" borderRadius="2xl" textAlign="center">
                 <Box flex="1" color={"black"}>
-                   KEPLR integration is still a work in progress.<br />
-                   You will need to refresh the page when changing accounts.
+                    NOTE: THIS IZ NOT GOVMØS. <br/> THIS IZ A GENERIC STEAK LIQUID STAKING CONTRACT DEPLOYED FOR FUNZIEZ ON JOE CHAIN.
+                   {/* KEPLR integration is still a work in progress.<br />
+                   You will need to refresh the page when changing accounts. */}
 
                 </Box>
 

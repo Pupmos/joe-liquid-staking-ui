@@ -23,18 +23,18 @@ const About: FC<SteakProps> = ({network, client}) => {
             <Header text="About"/>
             <Box bg="white" p="6" mb="4" borderRadius="2xl">
                 <Text mb="3">
-                    <b>Steak</b> is a liquid staking protocol for the {network.name}.
+                    <b>Pupjoes</b> is a liquid staking protocol for the {network.name}.
                 </Text>
                 <Text mb="3">
-                    Users stake {convertFromMicroDenom(network.denom)} through the <b>Steak Hub</b> smart contract,
+                    Users stake {convertFromMicroDenom(network.denom)} through the <b>Pupjoes Hub</b> smart contract,
                     which in return mints 🥩
-                    STEAK tokens to the users representing their staked amount. Every 24–48 hours, the staking
-                    rewards are claimed and reinvested. As yield accrues, the exchange ratio between STEAK and
-                    {convertFromMicroDenom(network.denom)} tokens changes, with each unit of STEAK becoming worth
+                    PUPJOE tokens to the users representing their staked amount. Every 24–48 hours, the staking
+                    rewards are claimed and reinvested. As yield accrues, the exchange ratio between PUPJOE and
+                    {convertFromMicroDenom(network.denom)} tokens changes, with each unit of PUPJOE becoming worth
                     more {convertFromMicroDenom(network.denom)} over time.
                 </Text>
                 <Text>
-                    Compared to similar protocols such as Lido and Stader, Steak&rsquo;s unique features
+                    Compared to similar protocols such as Lido and Stader, Pupjøe&rsquo;s unique features
                     include:
                 </Text>
                 <UnorderedList mb="6">
@@ -45,7 +45,7 @@ const About: FC<SteakProps> = ({network, client}) => {
                     } {maxfee != 0 &&
                     <ListItem>
                         <b>{formatPercentage(fees)} capped at {formatPercentage(maxfee)} fees of commission earned</b>,
-                        used to pay for the running of Steak
+                        used to pay for the running of Pupjoes
                     </ListItem>
 
                 }
@@ -93,14 +93,14 @@ const About: FC<SteakProps> = ({network, client}) => {
                         isExternal={true}
                         href={`${network.contract_explorer}${network.hub}`}
                     >
-                        Steak Hub contract <ExternalLinkIconWrapper/>
+                        Pupjøes Hub contract <ExternalLinkIconWrapper/>
                     </Link>
                     <Link
                         variant="docs"
                         isExternal={true}
                         href={`${network.contract_explorer}${network.steak}`}
                     >
-                        Steak Token contract <ExternalLinkIconWrapper/>
+                        Pupjøes Token contract <ExternalLinkIconWrapper/>
                     </Link>
                 </Flex>
                 <Flex direction={["column", null, "row", null]}>

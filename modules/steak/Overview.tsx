@@ -33,7 +33,7 @@ const Overview: FC<SteakProps> = ({network, client}) => {
                 />
                 <OverviewItem
                     primaryText={formatNumber(exchangeRate, 6)}
-                    secondaryText={`${convertFromMicroDenom(network.denom)} per STEAK`}
+                    secondaryText={`${convertFromMicroDenom(network.denom)} per PUPJOE`}
                     additionalText="Exchange ratio"
                 />
                 <OverviewItem primaryText="TBD" secondaryText="_" additionalText="Current APY"/>

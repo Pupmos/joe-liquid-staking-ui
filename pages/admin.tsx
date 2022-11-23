@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { useCWClient } from "@wizard-ui/react";
+import { useWallet } from "@wizard-ui/react";
 import { SteakProps } from "./_app";
 import { Text } from "@chakra-ui/react";
 import Admin from "modules/steak/Admin";
 
 export default function adminPage({ network, chain}: SteakProps) {
-  const client = useCWClient();
+  const { client } = useWallet()
 
   if (!network || !client) {
     return <Text bg="white">Error. No network</Text>;
@@ -14,7 +14,7 @@ export default function adminPage({ network, chain}: SteakProps) {
   return (
     <>
       <Head>
-        <title>Steak | Admin Operations</title>
+        <title>Pupjoes | Admin Operations</title>
       </Head>
       <Admin network={network} client={client} chain={chain}/>
     </>

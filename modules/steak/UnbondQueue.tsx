@@ -15,7 +15,7 @@ import { SteakProps } from "../../pages/_app";
 const UnbondQueue: FC<SteakProps> = ({ network,chain,client})=> {
   const { address } = useWallet();
   const pendingBatch = usePendingBatch({client, hub:network.hub });
-  const unbondRequests = useUnbondRequests({client, hub:network.hub, address });
+  const unbondRequests = useUnbondRequests({client, hub:network.hub, address: address || '' });
  // const x =useUnbondRequestsHydrated({client, hub:network.hub, address });
 
   if (unbondRequests.isLoading || pendingBatch.isLoading) {

@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 
 
 import { SteakProps } from "../../pages/_app";
-import { useBalance, useWallet } from "@wizard-ui/react";
+import { useWallet } from "@wizard-ui/react";
 import Header from "modules/common/components/Header";
 import ArrowDownIcon from "modules/common/components/Icons/ArrowDownIcon";
 import AssetInput from "modules/common/components/AssetInput";
@@ -13,6 +13,7 @@ import { toUtf8 } from "@cosmjs/encoding";
 import { useHubState } from "hooks";
 import TxModal from "modules/common/components/TxModal";
 import { EncodeObject } from "@cosmjs/proto-signing";
+import useBalance from "hooks/useBalance";
 // import { add } from "husky";
 
 const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
@@ -38,7 +39,7 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
           {
             typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
             value: MsgExecuteContract.fromPartial({
-              sender: address,
+              sender: address || undefined,
               contract: network.hub,
               msg: toUtf8(
                 jsonMsg
@@ -100,8 +101,8 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
           />
         </Flex>
         <AssetInput
-          assetSymbol="STEAK"
-          assetLogo="/steak.png"
+          assetSymbol="PUPJOE"
+          assetLogo="/pupjoes.jpg"
           price={prices.steak}
           balance={!steakBalance.isLoading ? steakBalance.data / 1e6 : 0}
           isEditable={false}
