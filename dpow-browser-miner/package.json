@@ -1,0 +1,15 @@
+{
+  "name": "dpow-browser-miner",
+  "collaborators": [
+    "Sirius Taikun <siriustaikun@protonmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "dpow_browser_miner_bg.wasm",
+    "dpow_browser_miner.js",
+    "dpow_browser_miner.d.ts"
+  ],
+  "module": "dpow_browser_miner.js",
+  "types": "dpow_browser_miner.d.ts",
+  "sideEffects": false
+}
