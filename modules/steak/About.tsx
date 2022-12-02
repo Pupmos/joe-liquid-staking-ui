@@ -28,16 +28,19 @@ const About: FC<SteakProps> = ({network, client}) => {
                 <Text mb="3">
                     Users stake {convertFromMicroDenom(network.denom)} through the <b>Pupjoes Hub</b> smart contract,
                     which in return mints 🥩
-                    PUPJOE tokens to the users representing their staked amount. Every 24–48 hours, the staking
-                    rewards are claimed and reinvested. As yield accrues, the exchange ratio between PUPJOE and
-                    {convertFromMicroDenom(network.denom)} tokens changes, with each unit of PUPJOE becoming worth
+                    WETJOE tokens to the users representing their staked amount. Every 24–48 hours, the staking
+                    rewards are claimed and reinvested. As yield accrues, the exchange ratio between WETJOE and
+                    {convertFromMicroDenom(network.denom)} tokens changes, with each unit of WETJOE becoming worth
                     more {convertFromMicroDenom(network.denom)} over time.
                 </Text>
                 <Text>
-                    Compared to similar protocols such as Lido and Stader, Pupjøe&rsquo;s unique features
+                    Compared to similar protocols such as Lido and Stader, WetJoe&rsquo;s unique features
                     include:
                 </Text>
                 <UnorderedList mb="6">
+                    <ListItem>
+                        <b>Delegated Proof of Work</b>
+                    </ListItem>
                     {maxfee == 0 &&
                         <ListItem>
                             <b>Zero fee or commission</b>
@@ -93,14 +96,14 @@ const About: FC<SteakProps> = ({network, client}) => {
                         isExternal={true}
                         href={`${network.contract_explorer}${network.hub}`}
                     >
-                        Pupjøes Hub contract <ExternalLinkIconWrapper/>
+                        WetJoe Hub contract <ExternalLinkIconWrapper/>
                     </Link>
                     <Link
                         variant="docs"
                         isExternal={true}
                         href={`${network.contract_explorer}${network.steak}`}
                     >
-                        Pupjøes Token contract <ExternalLinkIconWrapper/>
+                        WETJOE Token contract <ExternalLinkIconWrapper/>
                     </Link>
                 </Flex>
                 <Flex direction={["column", null, "row", null]}>

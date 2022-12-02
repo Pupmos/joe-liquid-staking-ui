@@ -44,7 +44,7 @@ export const CosmosWallet: FC<SteakProps> = ({ network }) => {
               {steakBalance.isLoading && <MenuItem>Steak Balance Loading...</MenuItem>}
               {steakBalance.isError && <MenuItem>Steak Balance Error...</MenuItem>}
               {!steakBalance.isError && !steakBalance.isLoading &&
-                <MenuItem>pupJOE: {convertMicroDenomToDenom(steakBalance.data)}</MenuItem>}
+                <MenuItem>WETJOE: {convertMicroDenomToDenom(steakBalance.data)}</MenuItem>}
 
               <MenuItem>Copy Address</MenuItem>
             </MenuList>

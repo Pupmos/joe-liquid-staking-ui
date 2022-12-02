@@ -97,7 +97,7 @@ const UnbondQueueItem: FC<UnbondQueueItem> = ({ pending_batch, id, shares, netwo
         {capitalizeFirstLetter(status)}
       </Td>
       <Td borderBottom="none" py="6" minW="200px">
-        {formatNumber(amount / 1e6, 6) + (status === "pending" ? " PUPJOE" : ` ${convertFromMicroDenom(network.denom)}`)}
+        {formatNumber(amount / 1e6, 6) + (status === "pending" ? " WETJOE" : ` ${convertFromMicroDenom(network.denom)}`)}
       </Td>
       <Td borderBottom="none" py="6" minW="270px">
         {startTime.toLocaleString()}

@@ -101,7 +101,7 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
           />
         </Flex>
         <AssetInput
-          assetSymbol="PUPJOE"
+          assetSymbol="WETJOE"
           assetLogo="/pupjoes.jpg"
           price={prices.steak}
           balance={!steakBalance.isLoading ? steakBalance.data / 1e6 : 0}

@@ -35,7 +35,7 @@ const Credit: FC<SteakProps> = ({network}) => {
             </Header>
             <Box color="black" bg="brand.lightBrown" py="4" mb="4" borderRadius="2xl" textAlign="center">
                 <Box flex="1" color={"black"}>
-                    Pupjøes Liquid Staking is brought to you by&nbsp;
+                    WetJoe Liquid Staking is brought to you by&nbsp;
                     <Link target="_blank" href="https://twitter.com/pupmos">
                        Pupjøes
                     </Link>.
@@ -55,7 +55,7 @@ const Credit: FC<SteakProps> = ({network}) => {
                             <ValidatorLogoSingle
                                 credit={network.validators[0]}/></Center></Box>
                 )}
-                <Box flex="1" color={"black"}>Pupjøes is built on the work of&nbsp;
+                <Box flex="1" color={"black"}>WetJoes is built on the work of&nbsp;
                     <Link target="_blank" href="https://twitter.com/pfc_validator">
                        PFC Validator
                     </Link>,&nbsp;

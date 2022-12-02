@@ -90,10 +90,10 @@ const UnbondForm: FC<SteakProps> = ({ network, chain, client }) => {
 
   return (
     <Box maxW="container.sm" mx="auto">
-      <Header text="Unstake PUPJOE" />
+      <Header text="Unstake WETJOE" />
       <Box position="relative">
         <AssetInput
-          assetSymbol="PUPJOE"
+          assetSymbol="WETJOE"
           assetLogo="/pupjoes.jpg"
           price={prices.steak}
           balance={!steakBalance.isLoading ? steakBalance.data  / 1e6 : 0}
