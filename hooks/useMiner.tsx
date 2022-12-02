@@ -36,6 +36,7 @@ class Miner {
   private start: ((...args: any[]) => void) | undefined;
   private hasStarted = false;
   private lastMinedProof: MinedProof | undefined;
+  private hasInitialized = false;
   minerParams: {
     difficulty: bigint;
     entropy: string;
@@ -170,6 +171,10 @@ class Miner {
   }
 
   async init() {
+    if (this.hasInitialized) {
+      return;
+    }
+    this.hasInitialized = true;
     init().then(async () => {
       console.log("initialized");
       await this.pollForMinerParams();
@@ -192,7 +197,6 @@ class Miner {
 
 const miner = new Miner();
 
-miner.init();
 
 export const useMiner = (hub: string) => {
   const { client, address, signingClient } = useWallet();
@@ -216,6 +220,7 @@ export const useMiner = (hub: string) => {
     miner.stopMining();
   }, []);
   useEffect(() => {
+    miner.init();
     if (client && address && hub && signingClient) {
       miner.setNonce(localNonceStorage.get())
       if (minerStatus === "running") {
