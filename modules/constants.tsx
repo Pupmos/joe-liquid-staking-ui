@@ -140,9 +140,9 @@ export const chains: supported_chains = {
         multiquery: "juno1q49nd5wyecxc64hmuqr3ax3get0pt337frwjqg0lxx5lagv3vfgsa5quh0",
         multicall: "juno1l7vrwvhvfea0wd2ch4qs9u0vrqr0pynxddft70kw0dgjuj0tzvys73hnuc",
         hub: "joe18yn206ypuxay79gjqv6msvd9t2y49w4fz8q7fyenx5aggj0ua37qnv0qf3",
-        tx_explorer: "https://mintscan.io/juno/txs/",
-        validator_explorer: "https://justjoe.app",
-        contract_explorer: "https://ping.justjoe.app",
+        tx_explorer: "https://explorer.justjoe.app/joe/tx/",
+        validator_explorer: "https://explorer.justjoe.app",
+        contract_explorer: "https://explorer.justjoe.app/joe",
         gas_price: "0.04ujoe",
         validators: [
             {
