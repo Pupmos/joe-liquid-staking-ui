@@ -4,7 +4,7 @@ import {
 } from "@cosmjs/cosmwasm-stargate";
 import { useWallet } from "@wizard-ui/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import init, { mine, MinedProof } from "wasm-miner";
+import init, { mine, MinedProof } from "dpow-browser-miner";
 
 const localNonceStorage = {
   get: () => {
