@@ -19,6 +19,6 @@
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "modules/util/WizardLeapWalletAdapter.js", "modules/util/WizardLeapWalletAdapter.js"],
   "exclude": ["node_modules"]
 }

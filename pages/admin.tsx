@@ -14,7 +14,7 @@ export default function adminPage({ network, chain}: SteakProps) {
   return (
     <>
       <Head>
-        <title>Pupjoes | Admin Operations</title>
+        <title>WetJoe | Admin Operations</title>
       </Head>
       <Admin network={network} client={client} chain={chain}/>
     </>

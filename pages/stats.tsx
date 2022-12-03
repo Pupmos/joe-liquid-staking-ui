@@ -17,7 +17,7 @@ export default function StatsPage({ network, chain }: SteakProps) {
   return (
     <>
       <Head>
-        <title>Pupjoes | Protocol Stats</title>
+        <title>WetJoe | Protocol Stats</title>
       </Head>
       <About network={network} chain={chain} client={client} />
       <Overview network={network} chain={chain} client={client} />

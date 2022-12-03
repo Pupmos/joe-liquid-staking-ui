@@ -14,7 +14,7 @@ export default function WithdrawPage({ network, chain }: SteakProps) {
     return (
         <>
             <Head>
-                <title>Pupjoes | Withdraw Unbonded</title>
+                <title>WetJoe | Withdraw Unbonded</title>
             </Head>
             <WithdrawForm chain={chain} network={network} client={client} />
         </>

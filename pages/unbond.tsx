@@ -16,7 +16,7 @@ export default function UnBondPage({ network, chain }: SteakProps) {
   return (
     <>
       <Head>
-        <title>Pupjoes | Unbond</title>
+        <title>WetJoe | Unbond</title>
       </Head>
       <UnbondForm chain={chain} network={network} client={client} />
     </>

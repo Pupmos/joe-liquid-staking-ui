@@ -37,7 +37,7 @@ const Credit: FC<SteakProps> = ({network}) => {
                 <Box flex="1" color={"black"}>
                     WetJoe Liquid Staking is brought to you by&nbsp;
                     <Link target="_blank" href="https://twitter.com/pupmos">
-                       Pupjøes
+                       @Pupmos
                     </Link>.
                 </Box>
 
@@ -67,9 +67,9 @@ const Credit: FC<SteakProps> = ({network}) => {
                     </Link> none of whom have any affiliation with this.
                 </Box>
             </Box>
-            <Box color="black" bg="brand.darkBrown" py="4" mb="4" borderRadius="2xl" textAlign="center">
+            <Box color="black" bg="brand.darkBrown" px="4" py="4" mb="4" borderRadius="2xl" textAlign="center">
                 <Box flex="1" color={"black"}>
-                    NOTE: THIS IZ NOT GOVMØS. <br/> THIS IZ A GENERIC STEAK LIQUID STAKING CONTRACT DEPLOYED FOR FUNZIEZ ON JOE CHAIN.
+                    NOTE: THIS IZ NOT GOVMØS. <br/> THIS IZ A HIGHLY EXPERIMENTAL DELEGATED-PROOF-OF-WORK VARIANT OF STEAK LIQUID STAKING CONTRACTS DEPLOYED FOR FUNZIEZ ON JOE CHAIN.
                    {/* KEPLR integration is still a work in progress.<br />
                    You will need to refresh the page when changing accounts. */}
 

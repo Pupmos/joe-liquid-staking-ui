@@ -12,7 +12,7 @@ export default function BondPage({ network, chain }: SteakProps) {
   return (
     <>
       <Head>
-        <title>Pupjoes | Bond</title>
+        <title>WetJoe | Bond</title>
       </Head>        
       <BondForm chain={chain} network={network} client={client} />
     </>

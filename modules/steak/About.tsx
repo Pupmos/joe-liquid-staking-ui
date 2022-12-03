@@ -23,10 +23,10 @@ const About: FC<SteakProps> = ({network, client}) => {
             <Header text="About"/>
             <Box bg="white" p="6" mb="4" borderRadius="2xl">
                 <Text mb="3">
-                    <b>Pupjoes</b> is a liquid staking protocol for the {network.name}.
+                    <b>WetJoe</b> is a liquid staking protocol for the {network.name}.
                 </Text>
                 <Text mb="3">
-                    Users stake {convertFromMicroDenom(network.denom)} through the <b>Pupjoes Hub</b> smart contract,
+                    Users stake {convertFromMicroDenom(network.denom)} through the <b>WetJoe Hub</b> smart contract,
                     which in return mints 🥩
                     WETJOE tokens to the users representing their staked amount. Every 24–48 hours, the staking
                     rewards are claimed and reinvested. As yield accrues, the exchange ratio between WETJOE and
@@ -48,7 +48,7 @@ const About: FC<SteakProps> = ({network, client}) => {
                     } {maxfee != 0 &&
                     <ListItem>
                         <b>{formatPercentage(fees)} capped at {formatPercentage(maxfee)} fees of commission earned</b>,
-                        used to pay for the running of Pupjoes
+                        used to pay for the running of WetJoe
                     </ListItem>
 
                 }

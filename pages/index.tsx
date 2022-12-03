@@ -15,7 +15,7 @@ export default function Web({ network, chain }: SteakProps) {
   return (
     <>
       <Head>
-        <title>Pupjoes | My Pupjoes</title>
+        <title>WetJoe | My WetJoe</title>
       </Head>
       <MySteak network={network} client={client} chain={chain} />
       <UnbondQueue network={network} client={client} chain={chain} />

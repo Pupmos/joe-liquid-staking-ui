@@ -59,7 +59,7 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
     return <Header text="Loading..." />;
   }
   if (steakBalance.error) {
-    console.log("Pupjoes Balance Error", steakBalance.error);
+    console.log("WetJoe Balance Error", steakBalance.error);
     return <Header text="Error" />;
   }
   const steakDenomBalance = convertMicroDenomToDenom(steakBalance.data);
@@ -68,7 +68,7 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
 
   return (
     <>
-      {/* <Box color='white' bg='red'>Pupjoes is closing down.. this site will stay up for people to unstake their tokens</Box> */}
+      {/* <Box color='white' bg='red'>WetJoe is closing down.. this site will stay up for people to unstake their tokens</Box> */}
       <Header text="My WETJOES">
         {chain === "LUNA" && (
           <TerraMySteak network={network} chain={chain} client={client} />
