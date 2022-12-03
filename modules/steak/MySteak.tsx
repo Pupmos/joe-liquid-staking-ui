@@ -229,7 +229,7 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
                   <Td isNumeric>
                     {miner.currentMinerParams?.difficulty
                       .toLocaleString()
-                      .padStart(30, "0")}
+                      .padStart(+miner.currentMinerParams.difficulty.toString() + miner.currentMinerParams.difficulty.toString().length, "0")}
                   </Td>
                 </Tr>
               </Tbody>
