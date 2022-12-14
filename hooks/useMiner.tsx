@@ -1,10 +1,12 @@
 import {
   CosmWasmClient,
+  ExecuteResult,
   SigningCosmWasmClient,
 } from "@cosmjs/cosmwasm-stargate";
 import { useWallet } from "@wizard-ui/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import init, { mine, MinedProof } from "dpow-browser-miner";
+import { useMutation } from '@tanstack/react-query';
 
 const localNonceStorage = {
   get: () => {
@@ -21,6 +23,10 @@ const localNonceStorage = {
 
 const MAX_NONCE = BigInt("18_446_744_073_709_551_615".replaceAll("_", ""));
 
+type SubmittedProofContext = {
+  proof: MinedProof;
+  tx: ExecuteResult
+}
 type MinerClientState = {
   client: CosmWasmClient;
   address: string;
@@ -28,6 +34,7 @@ type MinerClientState = {
   signingClient: SigningCosmWasmClient;
   onMinedBatch?: (proof: MinedProof) => void;
   onMinerParams?: (params: { difficulty: bigint; entropy: string }) => void;
+  onSubmitProof?: (context: SubmittedProofContext) => void;
 };
 class Miner {
   private clientState?: MinerClientState;
@@ -37,6 +44,7 @@ class Miner {
   private hasStarted = false;
   private lastMinedProof: MinedProof | undefined;
   private hasInitialized = false;
+  private validator: string | undefined;
   minerParams: {
     difficulty: bigint;
     entropy: string;
@@ -48,6 +56,11 @@ class Miner {
   setNonce(nonce: bigint) {
     this.nonce = nonce;
   }
+
+  setValidator(validator: string) {
+    this.validator = validator;
+  }
+
   setClientState(clientState: MinerClientState) {
     this.clientState = clientState;
   }
@@ -59,6 +72,35 @@ class Miner {
 
   stopMining() {
     this.resetNextTick();
+  }
+
+  async updateMinerEntropy() {
+    if (!this.clientState) {
+      throw new Error("No client state");
+    }
+    // random bytes string from browser crypto 
+    const entropy = await crypto.getRandomValues(new Uint8Array(32)).reduce(
+      (acc, val) => acc + val.toString(16).padStart(2, "0"),
+      "",
+    );
+
+    await this.clientState.signingClient?.execute(
+      this.clientState.address,
+      this.clientState.hub,
+      {
+        update_entropy: {
+          entropy
+        },
+      },
+      {
+        gas: "2000000",
+        amount: [{ denom: "ujoe", amount: "10000000" }],
+      },
+    ).then((tx) => {
+      console.table(tx)
+    }).catch((e) => {
+      console.error(e);
+    });
   }
 
   private async *minerLoop() {
@@ -137,7 +179,7 @@ class Miner {
     return this.lastMinedProof;
   }
 
-  private async submitValidProof(minedProof: MinedProof) {
+  private async submitValidProof(minedProof: MinedProof, validator: string) {
     if (!minedProof.success) {
       throw new Error("Proof is not valid");
     }
@@ -150,13 +192,26 @@ class Miner {
       {
         submit_proof: {
           nonce: minedProof?.nonce.toString(),
+          validator
         },
       },
       {
         gas: "2000000",
         amount: [{ denom: "ujoe", amount: "10000000" }],
       },
-    );
+    ).then((tx) => {
+      this.clientState?.onSubmitProof?.({
+        proof: minedProof,
+        tx
+      });
+      return tx;
+    }).catch((e) => {
+      console.error(e);
+      this.clientState?.onSubmitProof?.({
+        proof: minedProof,
+        tx: e
+      });
+    });
   }
   private async pollForClientState() {
     return new Promise<void>(async (resolve) => {
@@ -179,6 +234,9 @@ class Miner {
       console.log("initialized");
       await this.pollForMinerParams();
       console.log('miner params loaded')
+      if (!this.validator) {
+        throw new Error("No validator set");
+      }
       for await (const _ of this.minerLoop()) {
         if (this.nonce > MAX_NONCE) {
           this.nonce = BigInt(0);
@@ -186,7 +244,7 @@ class Miner {
         await this.pollForClientState();
         const minedProof = this.runMiningBatch();
         if (minedProof?.success) {
-          await this.submitValidProof(minedProof)
+          await this.submitValidProof(minedProof, this.validator)
             .then(console.log)
             .catch(console.error);
         }
@@ -198,7 +256,7 @@ class Miner {
 const miner = new Miner();
 
 
-export const useMiner = (hub: string) => {
+export const useMiner = (hub: string, validator: string | undefined) => {
   const { client, address, signingClient } = useWallet();
   const [minerStatus, setMinerStatus] = useState<"running" | "stopped">(
     "stopped",
@@ -206,6 +264,7 @@ export const useMiner = (hub: string) => {
   const [currentMinedProof, setCurrentMinedProof] = useState<MinedProof | null>(
     null,
   );
+  const [currentSubmittedProof, setCurrentSubmittedProof] = useState<SubmittedProofContext | null>(null);
   const [currentMinerParams, setCurrentMinerParams] = useState<{
     entropy: string;
     difficulty: bigint;
@@ -219,9 +278,11 @@ export const useMiner = (hub: string) => {
     setMinerStatus("stopped");
     miner.stopMining();
   }, []);
+  const updateEntropyMutation = useMutation(() => miner.updateMinerEntropy());
   useEffect(() => {
     miner.init();
-    if (client && address && hub && signingClient) {
+    if (client && address && hub && signingClient && validator) {
+      miner.setValidator(validator)
       miner.setNonce(localNonceStorage.get())
       if (minerStatus === "running") {
         miner.startMining();
@@ -236,6 +297,7 @@ export const useMiner = (hub: string) => {
           localNonceStorage.set(proof.nonce);
         },
         onMinerParams: setCurrentMinerParams,
+        onSubmitProof: setCurrentSubmittedProof
       });
       return () => {
         miner.stopMining();
@@ -249,7 +311,7 @@ export const useMiner = (hub: string) => {
         });
       };
     }
-  }, [client, address, hub, signingClient]);
+  }, [client, address, hub, signingClient, validator]);
 
   return {
     startMiner,
@@ -257,6 +319,8 @@ export const useMiner = (hub: string) => {
     minerStatus,
     currentMinedProof,
     currentMinerParams,
+    currentSubmittedProof,
     MAX_NONCE,
+    updateEntropyMutation
   };
 };

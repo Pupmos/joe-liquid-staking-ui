@@ -6,11 +6,11 @@ const link = {
       border: "solid 2px #d9474b",
       borderRadius: "md",
       color: "white",
-      bg: "brand.red",
+      bg: "accent.600",
       pl: "5",
       pr: "6",
       _hover: {
-        color: "brand.red",
+        color: "accent.600",
         bg: "transparent",
         textDecoration: "none",
       },

@@ -79,7 +79,7 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
           assetSymbol={convertFromMicroDenom(network.denom)}
           assetLogo={`/${network.denom}.png`}
           price={prices.native}
-          balance={!denomBalance.isLoading ? denomBalance.data / 1e6 : 0}
+          balance={!Number.isNaN(denomBalance.data + 1) ? denomBalance.data / 1e6 : 0}
           isEditable={true}
           onAmountChange={handleOfferAmountChange}
         />
@@ -94,9 +94,10 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
           <ArrowDownIcon
             w="3rem"
             h="3rem"
-            fill="brand.red"
-            bg="white"
-            border="solid 6px white"
+            fill="accent.300"
+            bg="gray.900"
+            border="solid 6px"
+            borderColor={"gray.900"}
             borderRadius="full"
           />
         </Flex>
@@ -113,11 +114,15 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
         <Button
           type="button"
           variant="solid"
+          size='md'
           mt="6"
           onClick={onOpen}
           isLoading={false}
-          bg={"brand.red"}
+          bg={"accent.600"}
           isDisabled={!address || offerAmount == 0}
+          height='48px'
+          width='200px'
+          border='2px'
         >
           Stake
         </Button>

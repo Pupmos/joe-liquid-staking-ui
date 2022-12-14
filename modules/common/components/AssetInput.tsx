@@ -30,28 +30,35 @@ const AssetInput: FC<Props> = ({
   fixedAmount,
   onAmountChange = () => {},
 }) => {
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<number | undefined>();
+  // const amount = fixedAmount;
+  // const setAmount = onAmountChange;
 
-  const maxBtn = isEditable ? (
+  const maxBtn = 
     <Button
+      disabled={isEditable ? false : true}
+      style={
+        isEditable ? {  } : { visibility: 'hidden', pointerEvents: 'none' }
+      }
       type="button"
       variant="mini"
+      size={'xs'}
+      bg={isEditable ? "gray.800" : "gray.900"}
       onClick={() => {
-        setAmount(balance);
         onAmountChange(balance);
+        setAmount(balance);
       }}
       isDisabled={false}
     >
       Max
     </Button>
-  ) : null;
 
   return (
-    <Box bg="white" borderRadius="2xl" p="6" mb="2">
+    <Box bg="gray.700" borderRadius="2xl" p="6" mb="2">
       <Flex direction={["column", null, "row"]}>
         <Box flex="1">
           <Box
-            bg="brand.red"
+            bg="gray.800"
             color="white"
             display="flex"
             borderRadius="full"
@@ -62,7 +69,7 @@ const AssetInput: FC<Props> = ({
           >
             <Flex align="center">
               <Box>
-                <Image src={assetLogo} alt="Logo" width="10" height="10" />
+                <Image src={assetLogo} borderRadius={10000} padding={0.5} border='1px solid white' alt="Logo" width="45px" height="45px" />
               </Box>
               <Box ml="3" flex="1">
                 <Text fontSize="2xl">{assetSymbol}</Text>
@@ -71,39 +78,45 @@ const AssetInput: FC<Props> = ({
             </Flex>
           </Box>
         </Box>
-        <Box flex="1" ml={[null, null, "8"]} mt={["4", null, "0"]}>
+        <Box flex="1" ml={[null, null, "8"]}  mt={["4", null, "0"]}>
           <NumberInput
-            defaultValue={0}
             value={fixedAmount ?? amount} // if no external fixed amount is set, then use the internal amount
             min={0}
             max={isEditable ? balance : undefined} // if not editable, then do not set a max
             precision={6}
             onChange={(value: string) => {
-              setAmount(Number(value));
-              onAmountChange(Number(value));
+              const numeric = Number(value);
+              onAmountChange(numeric);
+              setAmount(numeric);
             }}
             isDisabled={!isEditable}
             clampValueOnBlur={true}
+            borderLeft='none'
           >
             <NumberInputField
               h="16"
-              bg="brand.darkBrown"
+              bg="gray.800"
               fontSize="2xl"
               textAlign="right"
               p="4"
               pt="0"
               placeholder="0.0"
+              color="gray.200"
+              _placeholder={{
+                color: "gray.200",
+              }}
               _disabled={{
-                bg: "brand.lighterBrown",
+                bg: "gray.700",
+                borderColor: "gray.500",
                 opacity: "1.0",
                 cursor: "not-allowed",
               }}
             />
             <Box position="absolute" bottom="2" right="1.1rem">
-              <Text fontSize="small">${formatNumber(price * (fixedAmount ?? amount), 2)}</Text>
+              <Text color='gray.500' fontSize="small">${formatNumber(price * (fixedAmount ?? (amount || 0)), 2)}</Text>
             </Box>
           </NumberInput>
-          <Flex align="center" justify="space-between" mt="1"  color="white" bg='saddlebrown'>
+          <Flex align="center" justify="space-between" mt="1"  color="white">
             <HStack spacing="4" >
               <Text variant="dimmed" fontSize="sm">
                 In Wallet:

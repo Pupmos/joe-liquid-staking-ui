@@ -51,7 +51,7 @@ async function checkTxIsConfirmed(grpcGatewayUrl: string, txhash: string): Promi
 
 function SpinnerWrapper() {
   return (
-    <Spinner thickness="6px" speed="1s" emptyColor="transparent" color="brand.red" size="xl" />
+    <Spinner thickness="6px" speed="1s" emptyColor="transparent" color="accent.600" size="xl" />
   );
 }
 

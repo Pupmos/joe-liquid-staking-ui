@@ -19,34 +19,34 @@ export default extendTheme({
   styles: {
     global: {
       "html, body": {
-        bg: "#030309"
+        bg: "#030309",
       },
 
       "*": {
         scrollbarWidth: "6px",
-        scrollbarColor: "#7F56D9 transparent"
+        scrollbarColor: "#7F56D9 transparent",
       },
 
       "*::-webkit-scrollbar": {
-        width: "6px"
+        width: "6px",
       },
 
       "*::-webkit-scrollbar-track": {
-        bg: "transparent"
+        bg: "transparent",
       },
 
       "*::-webkit-scrollbar-thumb": {
         bg: "#7F56D9",
-        borderRadius: "1.5rem"
-      }
-    }
+        borderRadius: "1.5rem",
+      },
+    },
   },
   shadows,
   fonts: {
     heading:
       "'Roboto Mono',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
     body: "'Roboto Mono',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
-    mono: "Menlo, monospace"
+    mono: "Menlo, monospace",
   },
   components: {
     Accordion,
@@ -60,19 +60,32 @@ export default extendTheme({
     Spinner,
     Slider,
     Tabs,
-    Tooltip
+    Tooltip,
   },
   colors: {
+    "accent": {
+      "50": "#F1ECF9",
+      "100": "#D6C9EE",
+      "200": "#BCA6E3",
+      "300": "#A283D8",
+      "400": "#8860CD",
+      "500": "#6E3DC2",
+      "600": "#58319B",
+      "700": "#422574",
+      "800": "#2C184E",
+      "900": "#160C27"
+    },
     brand: {
       darkerBrown: "#a08b77",
       darkBrown: "hsl(262deg 52% 70%)",
       lightBrown: "hsl(262deg 52% 80%)",
       lighterBrown: "#e4d5c8",
       red: "hsl(262deg 52% 40%)",
+      accent_light: "hsl(262deg 55% 55%)",
       //black: "#312b26",
       black: "#fff",
-      white:"#fff"
-    }
+      white: "#fff",
+    },
   },
   textStyles: {
     h1: {
@@ -80,16 +93,15 @@ export default extendTheme({
       color: "gray.900",
       fontSize: "xl",
       mb: 2,
-      letterSpacing: 0.5
+      letterSpacing: 0.5,
     },
     bold: {
       color: "gray.700",
-      fontWeight: 700
+      fontWeight: 700,
     },
     light: {
       color: "gray.500",
-      fontSize: "sm"
-    }
-  }
-
+      fontSize: "sm",
+    },
+  },
 });

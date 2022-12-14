@@ -111,7 +111,7 @@ const UnbondForm: FC<SteakProps> = ({ network, chain, client }) => {
           <ArrowDownIcon
             w="3rem"
             h="3rem"
-            fill="brand.red"
+            fill="accent.600"
             bg="white"
             border="solid 6px white"
             borderRadius="full"
@@ -150,7 +150,7 @@ const UnbondForm: FC<SteakProps> = ({ network, chain, client }) => {
           mt="6"
           onClick={onOpen}
           isLoading={false}
-          bg={"brand.red"}
+          bg={"accent.600"}
           isDisabled={!address || offerAmount == 0}
         >
           Unstake

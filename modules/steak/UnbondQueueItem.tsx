@@ -74,11 +74,11 @@ const UnbondQueueItem: FC<UnbondQueueItem> = ({ pending_batch, id, shares, netwo
           border="solid 2px #d9474b"
           borderRadius="md"
           color="white"
-          bg="brand.red"
+          bg="accent.600"
           px="10"
           py="2"
           _hover={{
-            color: "brand.red",
+            color: "accent.600",
             bg: "white",
             textDecoration: "none"
           }}

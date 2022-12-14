@@ -156,6 +156,22 @@ export const useConfig = ({ client, hub }: useHubArgs) => {
   return data;
 };
 
+export const useValidatorMiningPowers = ({ client, hub }: useHubArgs, currentProofHash?: string) => {
+
+  const data = useQuery<{ address: string, mining_power: string }[]>(["validator_mining_powers", hub, currentProofHash], () => {
+    if (client == null || hub == null) {
+      throw new Error("Error in fetching validator_mining_powers");
+    }
+
+    return client.queryContractSmart(hub, { validator_mining_powers: {} }).then(d => {
+      console.log(d);
+      return d;
+    });
+  });
+
+  return data;
+};
+
 export type ContractStoreResponse<T> = {
   query_result: T;
 };
