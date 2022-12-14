@@ -334,92 +334,6 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
             Update Entropy
           </chakra.a>
         </Flex>
-
-        <Flex
-          direction={["column", "row", null, null]}
-          justify="center"
-          align={"center"}
-          mt="10"
-          width={"100%"}
-        >
-          <TableContainer
-            bg="white"
-            width={"80%"}
-            textColor={"accent.600"}
-            borderRadius="2xl"
-            p="4"
-          >
-            <Table size="sm">
-              <Thead>
-                <Tr>
-                  <Th>validator</Th>
-                  <Th isNumeric>mining power</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {/* progress bar of validators by their moniker and validatorMiningPowerRatios */}
-                {allowedValidators
-                  ?.sort((a, b) => {
-                    return (
-                      (validatorMiningPowerRatios.find(
-                        (v) => v.address === b.operator_address,
-                      )?.ratio || 0) -
-                      (validatorMiningPowerRatios.find(
-                        (v) => v.address === a.operator_address,
-                      )?.ratio || 0)
-                    );
-                  })
-                  .map((allowedValidator, index) => {
-                    const validator = validatorMiningPowerRatios.find(
-                      (v) => v.address === allowedValidator.operator_address,
-                    ) || {
-                      address: allowedValidator.operator_address,
-                      ratio: 0,
-                      mining_power: 0,
-                    };
-                    return (
-                      <Tr key={index}>
-                        <Td>
-                          {
-                            validators.data?.validators.find(
-                              (v) => v.operator_address === validator.address,
-                            )?.description.moniker
-                          }
-                        </Td>
-
-                        <Td isNumeric>
-                          <Flex w="100%" align="center" justify="space-between">
-                            <Text fontSize="xs" mr="3">
-                              {formatNumber(validator.ratio * 100, 2).padStart(
-                                6,
-                                "0",
-                              )}
-                              %
-                            </Text>
-
-                            <Progress
-                              w="full"
-                              colorScheme="green"
-                              size="sm"
-                              value={validator.ratio * 130}
-                            />
-                          </Flex>
-                        </Td>
-                        {/*  */}
-                      </Tr>
-                    );
-                  })}
-              </Tbody>
-              <Tfoot>
-                <Tr>
-                  <Th>validator</Th>
-                  <Th isNumeric>mining power</Th>
-                </Tr>
-              </Tfoot>
-            </Table>
-          </TableContainer>
-        </Flex>
-
         <Flex
           direction={["column", "row", null, null]}
           justify="center"
@@ -531,6 +445,92 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
               : "Nonce: " + miner.currentMinedProof?.nonce}
           </Text> */}
         </Flex>
+        <Flex
+          direction={["column", "row", null, null]}
+          justify="center"
+          align={"center"}
+          mt="10"
+          width={"100%"}
+        >
+          <TableContainer
+            bg="white"
+            width={"80%"}
+            textColor={"accent.600"}
+            borderRadius="2xl"
+            p="4"
+          >
+            <Table size="sm">
+              <Thead>
+                <Tr>
+                  <Th>validator</Th>
+                  <Th isNumeric>mining power</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {/* progress bar of validators by their moniker and validatorMiningPowerRatios */}
+                {allowedValidators
+                  ?.sort((a, b) => {
+                    return (
+                      (validatorMiningPowerRatios.find(
+                        (v) => v.address === b.operator_address,
+                      )?.ratio || 0) -
+                      (validatorMiningPowerRatios.find(
+                        (v) => v.address === a.operator_address,
+                      )?.ratio || 0)
+                    );
+                  })
+                  .map((allowedValidator, index) => {
+                    const validator = validatorMiningPowerRatios.find(
+                      (v) => v.address === allowedValidator.operator_address,
+                    ) || {
+                      address: allowedValidator.operator_address,
+                      ratio: 0,
+                      mining_power: 0,
+                    };
+                    return (
+                      <Tr key={index}>
+                        <Td>
+                          {
+                            validators.data?.validators.find(
+                              (v) => v.operator_address === validator.address,
+                            )?.description.moniker
+                          }
+                        </Td>
+
+                        <Td isNumeric>
+                          <Flex w="100%" align="center" justify="space-between">
+                            <Text fontSize="xs" mr="3">
+                              {formatNumber(validator.ratio * 100, 2).padStart(
+                                6,
+                                "0",
+                              )}
+                              %
+                            </Text>
+
+                            <Progress
+                              w="full"
+                              colorScheme="green"
+                              size="sm"
+                              value={validator.ratio * 130}
+                            />
+                          </Flex>
+                        </Td>
+                        {/*  */}
+                      </Tr>
+                    );
+                  })}
+              </Tbody>
+              <Tfoot>
+                <Tr>
+                  <Th>validator</Th>
+                  <Th isNumeric>mining power</Th>
+                </Tr>
+              </Tfoot>
+            </Table>
+          </TableContainer>
+        </Flex>
+
+        
       </Box>
     </>
   );
