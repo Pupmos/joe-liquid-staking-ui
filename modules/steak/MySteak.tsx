@@ -100,7 +100,7 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
   const allowedValidators = useMemo(
     () =>
       validators.data?.validators.filter((v) =>
-        hubConfig.data.validators.includes(v.operator_address),
+        hubConfig.data?.validators.includes(v.operator_address),
       ),
     [validators.data, hubConfig.data],
   );
@@ -334,6 +334,21 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
             Update Entropy
           </chakra.a>
         </Flex>
+        <Flex mx={"10%"}>
+          <Text color="brand.lightBrown" mt="5">
+            Ready for the next step? Check out the{" "}
+            <u>
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                href="https://github.com/Pupmos/joe-liquid-staking/#cli-prototype"
+              >
+                JOE Mining CLI
+              </a>
+            </u>
+            .
+          </Text>
+        </Flex>
         <Flex
           direction={["column", "row", null, null]}
           justify="center"
@@ -529,8 +544,6 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
             </Table>
           </TableContainer>
         </Flex>
-
-        
       </Box>
     </>
   );

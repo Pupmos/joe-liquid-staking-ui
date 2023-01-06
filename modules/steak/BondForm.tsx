@@ -27,6 +27,14 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
   const [offerAmount, setOfferAmount] = useState<number>(0);
   const [returnAmount, setReturnAmount] = useState<number>(0);
   const [msgs, setMsgs] = useState<EncodeObject[]>([]);
+
+  // log whether all async items are loaded 
+  console.table({
+    denomBalance: denomBalance.status,
+    steakBalance: steakBalance.status,
+    exchangeRate: exchangeRate.status,
+
+  })
   //const { contracts } = useConstants(wallet?.network.name);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
