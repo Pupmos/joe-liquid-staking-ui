@@ -15,6 +15,7 @@ import {
   WalletNotReadyError,
   WalletPublicKeyError,
 } from "@wizard-ui/core";
+import { chainDetails } from 'modules/constants';
 
 interface LeapWallet extends SigningCosmWasmClient {
   address?: any;
@@ -23,7 +24,7 @@ interface LeapWallet extends SigningCosmWasmClient {
 }
 
 interface LeapWindow extends Window {
-  leap?: WindowLeap;
+  leap?: any;
 }
 
 declare const window: LeapWindow;
@@ -141,6 +142,12 @@ export class LeapWalletAdapter extends BaseWalletAdapter {
 
   async connect(): Promise<void> {
     try {
+      const log = (...args: any[]) => {
+        console.log("LeapWalletAdapter", ...args);
+      };
+      const errlog = (...args: any[]) => {
+        console.error("LeapWalletAdapter", ...args);
+      };
       if (this.connected || this.connecting) return;
       if (this._readyState !== WalletReadyState.Installed)
         throw new WalletNotReadyError();
@@ -151,13 +158,6 @@ export class LeapWalletAdapter extends BaseWalletAdapter {
       let accounts = null;
 
       try {
-        const name = "Just Joe";
-        const CHAIN_ID = "joe-1"; // test_node.sh
-        const RPC_ENDPOINT = "http://95.217.113.126:26657";
-        const REST_ENDPOINT = "http://95.217.113.126:1317";
-
-        const STARGAZE_REST =
-          "https://api-stargaze.pupmos.network/cosmos/bank/v1beta1/balances/stars1q3scuwfpapydfzrkfssxuwccspewlp6sgnel53"; // prize pool of NFT
         // {
         //     "balances": [
         //     {
@@ -171,6 +171,10 @@ export class LeapWalletAdapter extends BaseWalletAdapter {
         //     }
         //     }
 
+        const name = "Just Joe";
+        const CHAIN_ID = "joe-1";
+        const RPC_ENDPOINT = "https://joe-rpc.polkachu.com:443";
+        const REST_ENDPOINT = "https://joe-api.polkachu.com:443";
         const bondDenom = "ujoe";
         const tokenDenom = "ujoe";
         await window.leap?.experimentalSuggestChain({
@@ -220,7 +224,7 @@ export class LeapWalletAdapter extends BaseWalletAdapter {
               coinDecimals: 6,
               // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
               // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-              coinGeckoId: "terra-luna-2",
+              // coinGeckoId: "terra-luna-2",
             },
           ],
           // List of coin/tokens used as a fee token in this chain.
@@ -234,20 +238,24 @@ export class LeapWalletAdapter extends BaseWalletAdapter {
               coinDecimals: 6,
               // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
               // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-              coinGeckoId: "terra-luna-2",
+              // coinGeckoId: "terra-luna-2",
             },
           ],
           coinType: 118,
           // Make sure that the gas prices are higher than the minimum gas prices accepted by chain validators and RPC/REST endpoint.
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           gasPriceStep: {
             low: 0.01,
             average: 0.025,
             high: 0.03,
           },
-        });
-        await window.leap!.enable(this._chainId);
+        }).then(log).catch(errlog);
+
+        
+        await window.leap!.enable(this._chainId).then(log).catch(errlog);
+
+        // next release
+        // await window.leap.suggestToken(this._chainId, chainDetails('joe').steak).then(log).catch(errlog);
+
 
         const offlineSigner = await window.leap!.getOfflineSignerAuto(
           this._chainId,
