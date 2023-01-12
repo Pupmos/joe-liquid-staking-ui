@@ -73,7 +73,7 @@ const BondForm: FC<SteakProps> = ({ network, chain, client }) => {
   }
   if (exchangeRate.isError) {
     console.log("exchange", exchangeRate.error);
-    return <Text bg="white">Errir...</Text>;
+    return <Text bg="white">Error...</Text>;
   }
   //console.log("exchange",exchangeRate.data)
   //console.log("exchange",exchangeRate.status)
