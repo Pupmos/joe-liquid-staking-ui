@@ -177,6 +177,7 @@ const MySteak: FC<SteakProps> = ({ network, chain, client }) => {
                 {config?.data?.validators.includes(v.operator_address)
                   ? " | (added)"
                   : "| (not added)"}
+                  {v.status}
               </option>
             ))}
           </Select>

@@ -52,7 +52,7 @@ export const useValidators = ({ api }: useAPIArgs) => {
       throw new Error("Error in fetching usePendingBatch");
     }
     return  axios.get<ValidatorsResponse>(
-        `${api}/cosmos/staking/v1beta1/validators?status=BOND_STATUS_BONDED&pagination.limit=250`
+        `${api}/cosmos/staking/v1beta1/validators?pagination.limit=250`
     ).then (response => response.data);
 
   });
